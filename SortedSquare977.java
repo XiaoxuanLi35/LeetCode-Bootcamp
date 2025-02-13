@@ -21,11 +21,32 @@ class Solution {
         }
         return newArr;
     }
+    public int[] sortedSquares2(int[] nums){
+        int len = nums.length;
+        int[] res = new int[n];
+        int k = len - 1;
+        int i = 0, j = len - 1;
+        while(i <= j){
+            // while loop is more suitable than for loop in this context
+            int isquare = nums[i] * nums[i];
+            int jsquare = nums[j] * nums[j];
+            if(isquare > jsquare){
+                res[k] = isquare;
+                i++;
+            } else {
+                res[k] = jsquare;
+                j--;
+            }
+            k--;
+        }
+        return res;
+    }
 }
 public class SortedSquare977{
   public static void main(String[] args){
     int[] nums = {-4,-1,0,3,10};
     Solution solution = new Solution;
-    System.out.println(Arrays.toString(newArr));
+    System.out.println("Solution 1: " + Arrays.toString(solution.sortedSquare(nums)));
+    System.out.println("Solution 2: " + Arrays.toString(solution.sortedSquare2(nums)));
   }
 }
