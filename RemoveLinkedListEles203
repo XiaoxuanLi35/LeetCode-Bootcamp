@@ -1,0 +1,32 @@
+// From today, I will follow the format of Leetcode, which means I will not write the main method
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+       // if the head node is target
+       while(head!= null && head.val == val){
+        head = head.next; // move the head node to next node, remove original head node
+       } 
+       ListNode curr = head;
+       // either the head node not target, then traverse from head node
+       // or the head node is target, then curr is the new head node
+       // when the target is not head node
+       while(curr != null && curr.next != null){
+        // if curr is null or only element then return head directly
+            if(curr.next.val == val){
+              curr.next = curr.next.next;// remove curr.next node
+            } else {
+                curr = curr.next;// check next node
+            }    
+       }
+       return head;
+    }
+}
